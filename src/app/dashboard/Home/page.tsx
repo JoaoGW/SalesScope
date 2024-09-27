@@ -1,6 +1,9 @@
+import MenuLateral from "@/components/Menu/menuLateral";
+
 export default function HomeDashboard() {
   return (
-    <div className="bg-white">
+    <div>
+      <MenuLateral/>
       <main>
         
       </main>
