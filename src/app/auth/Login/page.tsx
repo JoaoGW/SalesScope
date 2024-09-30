@@ -26,4 +26,4 @@ export default function Login() {
       <div className="bg-slate-200 p-3 w-1/2 rounded-r-xl h-full"></div>
     </section>
   );
-}  
+}
