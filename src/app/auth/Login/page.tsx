@@ -26,8 +26,8 @@ export default function Login() {
       <div className="flex flex-col justify-center bg-blued-purple p-24 w-1/2 rounded-l-xl h-full items-center">
         <p className="text-center text-5xl mb-6">Let's sign you in</p>
         <div className="flex flex-row justify-center mb-14">
-          <p className="mr-10 text-xl">Welcome to Sales Scope</p>
-          <Link className="text-xl underline" href="/SignUp">Sign Up</Link>
+          <p className="mr-10 text-xl">Welcome Back to Sales Scope!</p>
+          <Link className="text-xl underline" href="/auth/SignUp">Sign Up</Link>
         </div>
         <div className="text-center">
           <div className="mb-14">
