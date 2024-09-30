@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import MenuLateral from "@/components/Menu/menuLateral";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,7 +16,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Sales Scope",
-  description: "Project made by Joao Pedro do Carmo Ribeiro and it's part of GWBR Technologies properties.",
+  description: "Project made by Joao Pedro do Carmo Ribeiro - Software Developer. Content is part of GWBR Technologies properties.",
 };
 
 export default function RootLayout({
@@ -26,12 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <MenuLateral/>
-        {children}
-      </body>
+      <UserProvider>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          {children}
+        </body>
+      </UserProvider>
     </html>
   );
 }
