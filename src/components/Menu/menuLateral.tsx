@@ -1,36 +1,98 @@
-import { 
-    LayoutGrid, 
-    ChartColumn, 
+import {
+    LayoutGrid,
+    ChartColumn,
     BellRing,
     Mail,
     CircleUserRound,
     BadgeHelp,
     Hexagon
 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { Tooltip } from 'react-tooltip'
+import Link from 'next/link';
 
-export default function MenuLateral(){
-    return(
+export default function MenuLateral() {
+    const [actualRoute, setActualRoute] = useState("");
+    const path = usePathname();
+
+    // Verifies which route the user currently is and defines visual effects for it
+    const verifyRoute = (path: string) => {
+        const pathArray = path.split("/");
+        console.log(pathArray[2]);
+        setActualRoute(pathArray[2]); // I only want what comes after dashboard/ on the URL, since it describes my current section
+    }
+
+    useEffect(() => {
+        verifyRoute(path);
+    }, [])
+
+    return (
         <div className="flex flex-col absolute top-0 left-0 bg-zinc-800 z-50 justify-evenly h-screen items-center w-24">
             <div className="" id="logo">
-                <Hexagon color='purple' fill='purple' size={'2.5em'}/>
+                <Hexagon color='purple' size={'4em'} />
             </div>
             <div className="" id="home">
-                <LayoutGrid color='white' size={'2em'}/>
+                <Link href={'/dashboard/Home'}>
+                    <LayoutGrid
+                        color={actualRoute === "Home" ? 'purple' : 'white'}
+                        size={'2em'}
+                        fill={actualRoute === "Home" ? 'purple' : 'white'}
+                        data-tooltip-id="Home" data-tooltip-content="Home"
+                    />
+                    <Tooltip id="Home" place='right'/>
+                </Link>
             </div>
             <div className="" id="charts">
-                <ChartColumn color='white' size={'2em'}/>
+                <Link href={'/dashboard/Charts'}>
+                    <ChartColumn
+                        color={actualRoute === "Charts" ? 'purple' : 'white'}
+                        size={'2em'}
+                        data-tooltip-id="Charts" data-tooltip-content="Charts"
+                    />
+                    <Tooltip id="Charts" place='right'/>
+                </Link>
             </div>
             <div className="" id="notifications">
-                <BellRing color='white' size={'2em'}/>  
+                <Link href={'/dashboard/Notifications'}>
+                    <BellRing
+                        color={actualRoute === "Notifications" ? 'purple' : 'white'}
+                        size={'2em'}
+                        fill={actualRoute === "Notifications" ? 'purple' : 'white'}
+                        data-tooltip-id="Notifications" data-tooltip-content="Notifications"
+                    />
+                    <Tooltip id="Notifications" place='right'/>
+                </Link>
             </div>
             <div className="" id="contact">
-                <Mail color='white' size={'2em'}/>
+                <Link href={'/dashboard/Contact'}>
+                    <Mail
+                        color={actualRoute === "Contact" ? 'purple' : 'white'}
+                        size={'2em'}
+                        data-tooltip-id="Contact" data-tooltip-content="Contact"
+                    />
+                    <Tooltip id="Contact" place='right'/>
+                </Link>
             </div>
             <div className="" id="account">
-                <CircleUserRound color='white' size={'2em'}/>
+                <Link href={'/dashboard/Account'}>
+                    <CircleUserRound
+                        color={actualRoute === "Account" ? 'purple' : 'white'}
+                        size={'2em'}
+                        data-tooltip-id="Account" data-tooltip-content="Account"
+                    />
+                    <Tooltip id="Account" place='right'/>
+                </Link>
             </div>
             <div className="" id="help">
-                <BadgeHelp color='white' size={'2em'}/>
+                <Link href={'/dashboard/Help'}>
+                    <BadgeHelp
+                        color={actualRoute === "Help" ? 'purple' : 'white'}
+                        size={'2em'}
+                        data-tooltip-id="Help" data-tooltip-content="Help"
+                    />
+                    <Tooltip id="Help" place='right'/>
+                </Link>
             </div>
         </div>
     )
