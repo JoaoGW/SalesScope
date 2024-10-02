@@ -1,15 +1,18 @@
 "use client"
 import DashboardHeader from "@/components/Dashboard Header/dashHeader";
 import MenuLateral from "@/components/Menu/menuLateral";
+import { LoadingSpinner } from "@/components/LoadingSpinners/Spinners";
+
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Ellipsis } from 'lucide-react';
+import { SmallAmountProducts } from "@/components/Products/Products";
 
 export default function HomeDashboard() {
   // For the authenticated user
   const { user, error, isLoading } = useUser();
 
   // Information to display when/while fetching all the necessary data to this page
-  if (isLoading) { return <p>Loading...</p> }
+  if (isLoading) { return <LoadingSpinner/> }
   if (error) { return <p>An error occurred with your login attempt</p> }
 
   return (
@@ -33,6 +36,9 @@ export default function HomeDashboard() {
                   <div className="flex flex-row justify-between mb-3">
                     <p className="text-xl font-bold">Products</p>
                     <button type="button"><Ellipsis size={'30px'} /></button>
+                  </div>
+                  <div className="h-3/4 mb-3">
+                    <SmallAmountProducts/>
                   </div>
                 </div>
               </div>
