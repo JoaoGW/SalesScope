@@ -28,7 +28,7 @@ export default function MenuLateral() {
     }, [])
 
     return (
-        <div className="flex flex-col absolute top-0 left-0 bg-zinc-800 z-50 justify-evenly h-screen items-center w-24">
+        <div className="flex flex-col fixed top-0 left-0 bg-zinc-800 z-50 justify-evenly h-screen items-center w-24">
             <div className="" id="logo">
                 <Hexagon color='purple' size={'4em'} />
             </div>
