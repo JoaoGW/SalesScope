@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
         }
 
         const data = await response.json();
-        return NextResponse.json({ message: "Products returned with success! ", data }, { status: 200 });
+        return NextResponse.json({  data }, { status: 200 });
 
     } catch (Error) {
         return NextResponse.json({ message: "An Error was encountered while fetching Products Data" }, { status: 500 });

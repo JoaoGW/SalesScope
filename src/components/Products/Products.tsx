@@ -1,5 +1,7 @@
 import { Suspense, useEffect, useState } from "react"
 import { LoadingSpinner } from "../LoadingSpinners/Spinners";
+import Image from "next/image";
+import { removeBackground } from '@imgly/background-removal';
 
 interface Products {
     id: number,
@@ -10,6 +12,19 @@ interface Products {
     image: string
 }
 
+// Takes the list with all the products from the API and shuffles it to add dynamicity to the visualization
+const randomizeProductsDisplayed = (products: Products[]) => {
+    var shuffle = require('shuffle-array');
+    shuffle(products);
+}
+
+// Pick only the first words of the product, so it can display better on the user's screen
+const splitProductName = (productTitle: string) => {
+    const titleArray = productTitle.split(" ");
+    return titleArray[0] + " " + titleArray[1];
+}
+
+// To demonstrate a limited amount of products. Use in small spaces that needs to show products
 export function SmallAmountProducts() {
     // States for managing control of informations
     const [products, setProducts] = useState<Products[]>([]);
@@ -42,10 +57,25 @@ export function SmallAmountProducts() {
     }, []);
 
     //Randomize which products will be displayed
+    randomizeProductsDisplayed(products);
 
+    // Content rendering to be displayed
     return (
         <Suspense fallback={<LoadingSpinner />}>
-            <div></div>
+            <div className="flex flex-row justify-evenly">
+                {products.slice(0,5).map((product) => (
+                    <div className="flex flex-col flex-grow text-center items-center max-w-1/3 overflow-hidden mr-3" key={product.id}>
+                        <Image
+                            src={product.image}
+                            width={200}
+                            height={200}
+                            alt="Product Display"
+                            className="mb-2 w-1/2 h-1/2 rounded-xl"
+                        />
+                        <p>{splitProductName(product.title)}</p>
+                    </div>
+                ))}
+            </div>
         </Suspense>
     )
 }
