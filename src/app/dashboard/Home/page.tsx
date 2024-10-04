@@ -6,6 +6,7 @@ import { LoadingSpinner } from "@/components/LoadingSpinners/Spinners";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Ellipsis } from 'lucide-react';
 import { SmallAmountProducts } from "@/components/Products/Products";
+import { OverviewChart } from "@/components/Chart/Chart";
 
 export default function HomeDashboard() {
   // For the authenticated user
@@ -29,6 +30,9 @@ export default function HomeDashboard() {
                   <div className="flex flex-row justify-between mb-3">
                     <p className="text-xl font-bold">Overviews</p>
                     <button type="button"><Ellipsis size={'30px'} /></button>
+                  </div>
+                  <div className="h-3/4 mb-3 pb-8">
+                    <OverviewChart/>
                   </div>
                 </div>
                 { /** Chartt for Products - Quadrant */ }

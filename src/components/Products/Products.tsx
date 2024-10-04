@@ -1,7 +1,6 @@
 import { Suspense, useEffect, useState } from "react"
 import { LoadingSpinner } from "../LoadingSpinners/Spinners";
 import Image from "next/image";
-import { removeBackground } from '@imgly/background-removal';
 
 interface Products {
     id: number,
