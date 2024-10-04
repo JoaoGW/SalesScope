@@ -84,7 +84,7 @@ export function CustomersReviews() {
 
     return (
         <Suspense fallback={<LoadingSpinner/>}>
-            <section className="flex flex-col w-5/6 items-center mx-auto">
+            <section className="flex flex-col w-11/12 items-center mx-auto">
                 { isLaptop && customers.slice(0, 4).map((data) => (
                     <div key={data.id} className="flex flex-col mb-5 w-full border-b-2 pb-3" id="userReview">
                         <div className="flex flex-row justify-between" id="reviewHeader">

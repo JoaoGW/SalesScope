@@ -62,14 +62,14 @@ export function OverviewChart() {
                 data: generateRandomChartProfitValues(),
                 fill: false,
                 borderColor: 'blue',
-                tension: 0.3
+                tension: 0.1
             },
             {
                 label: "Expenses",
                 data: generateRandomChartExpenseValues(),
                 fill: false,
                 borderColor: 'red',
-                tension: 0.2
+                tension: 0.1
             }
         ]
     }
