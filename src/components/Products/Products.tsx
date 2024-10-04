@@ -74,6 +74,7 @@ export function SmallAmountProducts() {
                         <p>{splitProductName(product.title)}</p>
                     </div>
                 ))}
+                { error ? <p>{error}</p> : '' }
             </div>
         </Suspense>
     )

@@ -35,17 +35,13 @@ export default function DashboardHeader() {
         }),
     };
 
-    const SingleValue = ({ data }: SingleValueProps<any>) => (
-        <div className="flex items-center">
-            <Search className="mr-2" size={16} color="black"/>
-            <span>{data.label}</span>
-        </div>
-    );
+    
 
     return (
         <section className="flex flex-row justify-between items-center">
             <h1 className="text-3xl font-bold">Sales Scope Dashboard</h1>
             <div className="flex flex-row justify-end w-1/2 items-center">
+                <Search className="mr-3" size={'1.85em'}/>
                 <Select
                     options={Options}
                     styles={customStyles}
@@ -59,7 +55,6 @@ export default function DashboardHeader() {
                             primary: 'black',
                         },
                     })}
-                    components={{ SingleValue }}
                     placeholder="Search"
                     isSearchable
                 />

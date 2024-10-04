@@ -7,13 +7,14 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { Ellipsis } from 'lucide-react';
 import { SmallAmountProducts } from "@/components/Products/Products";
 import { OverviewChart } from "@/components/Chart/Chart";
+import { CustomersReviews } from "@/components/Customers/Customers";
 
 export default function HomeDashboard() {
   // For the authenticated user
   const { user, error, isLoading } = useUser();
 
   // Information to display when/while fetching all the necessary data to this page
-  if (isLoading) { return <LoadingSpinner/> }
+  if (isLoading) { return <LoadingSpinner /> }
   if (error) { return <p>An error occurred with your login attempt</p> }
 
   return (
@@ -25,7 +26,7 @@ export default function HomeDashboard() {
             <DashboardHeader />
             <section className="grid grid-cols-2 gap-5 mt-8 w-full h-screen">
               <div className="grid-rows-2">
-                { /** Chartt for Overviews - Quadrant */ }
+                { /** Chart for Overviews - Quadrant */}
                 <div className="bg-slate-800 w-full p-5 rounded-lg h-1/2 mb-8" id="overviews">
                   <div className="flex flex-row justify-between mb-3">
                     <p className="text-xl font-bold">Overviews</p>
@@ -35,22 +36,25 @@ export default function HomeDashboard() {
                     <OverviewChart/>
                   </div>
                 </div>
-                { /** Chartt for Products - Quadrant */ }
+                { /** Chart for Products - Quadrant */}
                 <div className="bg-slate-800 w-full p-5 rounded-lg h-1/4" id="products">
                   <div className="flex flex-row justify-between mb-3">
                     <p className="text-xl font-bold">Products</p>
                     <button type="button"><Ellipsis size={'30px'} /></button>
                   </div>
                   <div className="h-3/4 mb-3">
-                    <SmallAmountProducts/>
+                    <SmallAmountProducts />
                   </div>
                 </div>
               </div>
-              { /** Chartt for Reviews - Quadrant */ }
+              { /** Chart for Reviews - Quadrant */}
               <div className="bg-slate-800 p-5 rounded-lg h-4/5" id="reviews">
                 <div className="flex flex-row justify-between mb-3">
                   <p className="text-xl font-bold">Reviews</p>
                   <button type="button"><Ellipsis size={'30px'} /></button>
+                </div>
+                <div className="h-3/4 mb-3">
+                  <CustomersReviews />
                 </div>
               </div>
             </section>
