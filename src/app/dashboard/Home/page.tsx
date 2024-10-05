@@ -42,7 +42,7 @@ export default function HomeDashboard() {
                     <p className="text-xl font-bold">Products</p>
                     <button type="button"><Ellipsis size={'30px'} /></button>
                   </div>
-                  <div className="h-3/4 mb-3">
+                  <div className="h-3/4 m-3 mt-6">
                     <SmallAmountProducts />
                   </div>
                 </div>

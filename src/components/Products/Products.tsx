@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useState } from "react"
 import { LoadingSpinner } from "../LoadingSpinners/Spinners";
+import { Package } from 'lucide-react';
 import Image from "next/image";
 
 interface Products {
@@ -64,13 +65,7 @@ export function SmallAmountProducts() {
             <div className="flex flex-row justify-evenly">
                 {products.slice(0,5).map((product) => (
                     <div className="flex flex-col flex-grow text-center items-center max-w-1/3 overflow-hidden mr-3" key={product.id}>
-                        <Image
-                            src={product.image}
-                            width={200}
-                            height={200}
-                            alt="Product Display"
-                            className="mb-2 w-1/2 h-1/2 rounded-xl"
-                        />
+                        <Package size={'2.5em'}/>
                         <p>{splitProductName(product.title)}</p>
                     </div>
                 ))}
