@@ -14,7 +14,7 @@ interface Products {
 
 // Takes the list with all the products from the API and shuffles it to add dynamicity to the visualization
 const randomizeProductsDisplayed = (products: Products[]) => {
-    var shuffle = require('shuffle-array');
+    const shuffle = require('shuffle-array');
     shuffle(products);
 }
 
