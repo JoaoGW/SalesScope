@@ -4,9 +4,13 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-export function OverviewChart() {
+interface OverviewChartProps {
+  width?: string;
+  height?: string;
+}
 
-    // Chart Data for the Home Dashboard Chart Overview
+export function OverviewChart({ width = '100%', height = '100%' }: OverviewChartProps) {
+
     const data = {
         labels: ["Week #1", "Week #2", "Week #3", "Week #4"],
         datasets: [
@@ -34,9 +38,9 @@ export function OverviewChart() {
         ]
     }
 
-    // Chart Options for the Home Dashboard Chart Overview
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top' as const,
@@ -52,7 +56,7 @@ export function OverviewChart() {
             x: {
                 ticks: {
                     color: 'white'
-                },
+                }
             },
             y: {
                 ticks: {
@@ -63,8 +67,8 @@ export function OverviewChart() {
     }
 
     return (
-        <section className='flex justify-center items-center mx-auto w-11/12 h-11/12'>
+        <div style={{ width, height }}>
             <Line data={data} options={options} />
-        </section>
+        </div>
     )
 }

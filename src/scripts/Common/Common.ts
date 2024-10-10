@@ -9,6 +9,22 @@ export const verifyRoute = (path: string) => {
     return route;
 }
 
+// Get current date from device
+export const getCurrentDate = () => {
+    const date = new Date();
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    return {
+        day: date.getDate(),
+        month: monthNames[date.getMonth()],
+        year: date.getFullYear(),
+        fullDate: date
+    };
+};
+
 // Generates a random review information data for each customer
 export const generateRandomReviewValue = () => {
     const value = Math.random() * (5 - 1) + 1;
