@@ -11,20 +11,15 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Tooltip } from 'react-tooltip'
 import Link from 'next/link';
+import { verifyRoute } from '@/scripts/Common/Common';
 
 export default function MenuLateral() {
+
+    // Checking the current path
     const [actualRoute, setActualRoute] = useState("");
     const path = usePathname();
-
-    // Verifies which route the user currently is and defines visual effects for it
-    const verifyRoute = (path: string) => {
-        const pathArray = path.split("/");
-        console.log(pathArray[2]);
-        setActualRoute(pathArray[2]); // I only want what comes after dashboard/ on the URL, since it describes my current section
-    }
-
     useEffect(() => {
-        verifyRoute(path);
+        setActualRoute(verifyRoute(path));
     }, [])
 
     return (

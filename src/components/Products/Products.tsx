@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from "react"
 import { LoadingSpinner } from "../LoadingSpinners/Spinners";
 import { Package } from 'lucide-react';
 import Image from "next/image";
+import { randomizeProductsDisplayed, splitProductName } from "@/scripts/DashboardProducts/DashProducts";
 
 interface Products {
     id: number,
@@ -10,18 +11,6 @@ interface Products {
     description: string,
     category: string,
     image: string
-}
-
-// Takes the list with all the products from the API and shuffles it to add dynamicity to the visualization
-const randomizeProductsDisplayed = (products: Products[]) => {
-    var shuffle = require('shuffle-array');
-    shuffle(products);
-}
-
-// Pick only the first words of the product, so it can display better on the user's screen
-const splitProductName = (productTitle: string) => {
-    const titleArray = productTitle.split(" ");
-    return titleArray[0] + " " + titleArray[1];
 }
 
 // To demonstrate a limited amount of products. Use in small spaces that needs to show products

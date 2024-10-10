@@ -3,6 +3,7 @@ import { LoadingSpinner } from "../LoadingSpinners/Spinners"
 import { CircleUser } from 'lucide-react';
 import { ArrowDown } from 'lucide-react';
 import StarRatings from 'react-star-ratings';
+import { generateRandomNumber, generateRandomReviewValue } from "@/scripts/Common/Common";
 
 interface Customer {
     adress: Address,
@@ -25,17 +26,6 @@ interface Address {
     street: string,
     number: number,
     zipcode: string
-}
-
-// Generates a random review information data for each customer
-const generateRandomReviewValue = () => {
-    const value = Math.random() * (5 - 1) + 1;
-    return parseFloat(value.toFixed(2));
-}
-
-// Generates a random last reviewed time number for the momentaneous review (only use on dashboard/HOME)
-const generateRandomNumber = () => {
-    return Math.round(Math.random() * (59 - 1) + 1);
 }
 
 export function CustomersReviews() {

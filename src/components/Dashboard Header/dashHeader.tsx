@@ -1,5 +1,8 @@
 import Select, { StylesConfig, SingleValueProps, GroupBase } from "react-select";
 import { Search } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { verifyRoute } from "@/scripts/Common/Common";
+import { useEffect, useState } from "react";
 
 export default function DashboardHeader() {
     // Options for the search bar to find useful content
@@ -35,11 +38,16 @@ export default function DashboardHeader() {
         }),
     };
 
-    
+    // Check the URL and set the current page on title
+    const path = usePathname();
+    const [actualRoute, setActualRoute] = useState("");
+    useEffect(() => {
+        setActualRoute(verifyRoute(path));
+    }, [])
 
     return (
         <section className="flex flex-row justify-between items-center">
-            <h1 className="text-3xl font-bold">Sales Scope Dashboard</h1>
+            <h1 className="text-3xl font-bold">Sales Scope Dashboard - {actualRoute}</h1>
             <div className="flex flex-row justify-end w-1/2 items-center">
                 <Search className="mr-3" size={'1.85em'}/>
                 <Select
