@@ -18,7 +18,7 @@ export const generateRandomChartProfitValues = () => {
 
     // Generates random values to demonstrate the profit in each period
     for(let i = 0; i < 4; i++){
-        const random = Math.random() * (900 - 270) + 90;
+        const random = Math.random() * (900 - 270) + 270;
         profitValues.push(parseFloat(random.toFixed(2)));
     }
 
