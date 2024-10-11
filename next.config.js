@@ -1,6 +1,6 @@
-module.exports = {
+    module.exports = {
     images: {
-        domains: ['fakestoreapi.com']
+        domains: ['fakestoreapi.com', 'lh3.googleusercontent.com']
     },
     async redirects(){
         return[
